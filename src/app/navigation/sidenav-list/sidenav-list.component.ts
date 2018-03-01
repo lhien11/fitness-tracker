@@ -18,11 +18,15 @@ export class SidenavListComponent implements OnInit {
     this.authSubscription = this.authService.authChange.subscribe(authStatus => {
       this.isAuth = authStatus;
     });
-    
   }
 
   onClose() {
     this.closeSidenav.emit();
+  }
+
+  onLogout() {
+    this.onClose();
+    this.authService.logout();
   }
 
   ngOnDestroy() {
